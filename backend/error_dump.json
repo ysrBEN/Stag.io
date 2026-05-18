@@ -1,0 +1,13 @@
+{
+  "success": false,
+  "message": "Request failed with status code 404",
+  "stack": "AxiosError: Request failed with status code 404\n    at settle (C:\\Users\\Administrator\\node_modules\\axios\\dist\\node\\axios.cjs:1931:12)\n    at Unzip.handleStreamEnd (C:\\Users\\Administrator\\node_modules\\axios\\dist\\node\\axios.cjs:3176:11)\n    at Unzip.emit (node:events:508:28)\n    at endReadableNT (node:internal/streams/readable:1701:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)\n    at Axios.request (C:\\Users\\Administrator\\node_modules\\axios\\dist\\node\\axios.cjs:4236:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async callGemini (C:\\Users\\Administrator\\Desktop\\STAGE.IOIO\\backend\\utils\\geminiClient.js:8:30)\n    at async run (C:\\Users\\Administrator\\Desktop\\STAGE.IOIO\\backend\\test_call_dump.js:7:21)",
+  "response": {
+    "error": {
+      "code": 404,
+      "message": "models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+      "status": "NOT_FOUND"
+    }
+  },
+  "status": 404
+}

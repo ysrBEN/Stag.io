@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "521682196511",
+    "project_id": "stagio-f75bb",
+    "storage_bucket": "stagio-f75bb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:521682196511:android:88332af8b5a74e8ced9d2a",
+        "android_client_info": {
+          "package_name": "com.stagio.stagio_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "521682196511-0qd1b57gt20qcbbri04km1e66scc0hoh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.stagio.stagio_mobile",
+            "certificate_hash": "3826faef1abfe146c0a98a88caa01a1e36e56426"
+          }
+        },
+        {
+          "client_id": "521682196511-c9vulmae7ests4rieni3v5h341r0067u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuGMFxmBvEjpoEq2w9D_aubv-rw-_8Uis"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "521682196511-c9vulmae7ests4rieni3v5h341r0067u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
