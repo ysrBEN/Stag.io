@@ -1,9 +1,9 @@
 import jsPDF from 'jspdf';
 
 const formatDateSafe = (dateVal) => {
-    if (!dateVal) return '................................';
+    if (!dateVal) return 'N/A';
     const d = new Date(dateVal);
-    if (isNaN(d.getTime())) return '................................';
+    if (isNaN(d.getTime())) return 'N/A';
     return d.toLocaleDateString('fr-DZ');
 };
 
@@ -66,13 +66,13 @@ export const generateConvention = (data) => {
     doc.text(doc.splitTextToSize(compNameText, 78), 154, 48, { align: 'center' });
     
     doc.setFontSize(9);
-    doc.text("Représentée par :", 154, 58, { align: 'center' });
+    doc.text("Contact & Informations :", 154, 58, { align: 'center' });
     
     doc.setFont('helvetica', 'normal');
-    doc.setFontSize(9);
-    doc.text("Monsieur .....................................................", 115, 66);
-    doc.text("...................................................................", 115, 74);
-    doc.text("Tél : ............................ Fax : .........................", 115, 83);
+    doc.setFontSize(8.5);
+    doc.text(`Email : ${company.email || 'N/A'}`, 116, 65);
+    doc.text(`Site web : ${company.website || 'N/A'}`, 116, 73);
+    doc.text(`Secteur : ${company.industry || 'N/A'}`, 116, 82);
 
     // --- MAIN BOX (DONNÉES ÉTUDIANT) ---
     // x: 15, y: 95, w: 180, h: 115
@@ -87,58 +87,43 @@ export const generateConvention = (data) => {
 
     // Fields inside main box
     const startX = 18;
-    let currY = 118;
-    const lineHeight = 8.5;
+    let currY = 116;
+    const lineHeight = 11; // Elegant spacing for clean database-driven fields
 
     // Nom et prénom
     doc.setFontSize(11);
     doc.setFont('helvetica', 'bold'); doc.text("Nom et prénom : ", startX, currY);
-    doc.setFont('helvetica', 'normal'); doc.text(student.name || "....................................................", startX + 35, currY);
+    doc.setFont('helvetica', 'normal'); doc.text(student.name || "N/A", startX + 35, currY);
     currY += lineHeight;
 
-    // Faculté
-    doc.setFont('helvetica', 'bold'); doc.text("Faculté : ", startX, currY);
-    doc.setFont('helvetica', 'normal'); doc.text("....................................................................................", startX + 22, currY);
+    // Département / Spécialité
+    doc.setFont('helvetica', 'bold'); doc.text("Département / Spécialité : ", startX, currY);
+    doc.setFont('helvetica', 'normal'); doc.text(student.fieldOfStudy || "N/A", startX + 52, currY);
     currY += lineHeight;
 
-    // Département
-    doc.setFont('helvetica', 'bold'); doc.text("Département : ", startX, currY);
-    doc.setFont('helvetica', 'normal'); doc.text(student.fieldOfStudy || "........................................................................", startX + 30, currY);
-    currY += lineHeight;
-
-    // Carte d'étudiant & N° Sécurité Sociale
-    doc.setFont('helvetica', 'bold'); doc.text("Carte d'étudiant n° : ", startX, currY);
-    doc.setFont('helvetica', 'normal'); doc.text("............................", startX + 42, currY);
-    
-    doc.setFont('helvetica', 'bold'); doc.text("N° Sécurité Sociale : ", 110, currY);
-    doc.setFont('helvetica', 'normal'); doc.text("............................", 152, currY);
-    currY += lineHeight;
-
-    // Tél
-    doc.setFont('helvetica', 'bold'); doc.text("Tél : ", startX, currY);
-    doc.setFont('helvetica', 'normal'); doc.text("........................................................................................", startX + 12, currY);
+    // Contact (Email)
+    doc.setFont('helvetica', 'bold'); doc.text("Contact (Email) : ", startX, currY);
+    doc.setFont('helvetica', 'normal'); doc.text(student.email || "N/A", startX + 35, currY);
     currY += lineHeight;
 
     // Diplôme préparé
     doc.setFont('helvetica', 'bold'); doc.text("Diplôme préparé : ", startX, currY);
-    doc.setFont('helvetica', 'normal'); doc.text(student.academicYear ? `Master / Licence (${student.academicYear})` : "Master / Licence ....................................", startX + 38, currY);
+    doc.setFont('helvetica', 'normal'); doc.text(student.academicYear ? `Master / Licence (${student.academicYear})` : "N/A", startX + 38, currY);
     currY += lineHeight;
 
     // Thème du stage
     doc.setFont('helvetica', 'bold'); doc.text("Thème du stage : ", startX, currY);
     doc.setFont('helvetica', 'normal'); 
-    const themeText = offer.title || "....................................................................................";
+    const themeText = offer.title || "N/A";
     doc.text(doc.splitTextToSize(themeText, 130), startX + 36, currY);
-    currY += lineHeight + 3; // extra space in case of wrap
+    currY += lineHeight + 4; // extra space in case of wrap
 
-    // Responsable pédagogique
-    doc.setFont('helvetica', 'bold'); doc.text("Responsable pédagogique : ", startX, currY);
-    doc.setFont('helvetica', 'normal'); doc.text("........................................................................", startX + 56, currY);
-    currY += lineHeight;
-
-    // Durée du stage
+    // Durée & Mode de travail
     doc.setFont('helvetica', 'bold'); doc.text("Durée du stage : ", startX, currY);
-    doc.setFont('helvetica', 'normal'); doc.text(offer.duration || "............................", startX + 34, currY);
+    doc.setFont('helvetica', 'normal'); doc.text(offer.duration || "N/A", startX + 34, currY);
+
+    doc.setFont('helvetica', 'bold'); doc.text("Mode de travail : ", 110, currY);
+    doc.setFont('helvetica', 'normal'); doc.text(offer.workMode || "on-site", 145, currY);
     currY += lineHeight + 2;
 
     // Date début & fin
@@ -155,7 +140,7 @@ export const generateConvention = (data) => {
 
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(10);
-    const dateStr = validatedAt ? new Date(validatedAt).toLocaleDateString('fr-DZ') : '....................................';
+    const dateStr = validatedAt ? new Date(validatedAt).toLocaleDateString('fr-DZ') : new Date().toLocaleDateString('fr-DZ');
     doc.text(`Fait à Constantine le : ${dateStr}`, 145, 228, { align: 'center' });
 
     // Visa du chef de département

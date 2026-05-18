@@ -447,14 +447,18 @@ exports.getConventionData = async (req, res) => {
 
     res.json({
       student: {
-        name: application.student?.user?.name || "Student",
+        name: application.student?.user?.name || `${application.student?.firstName || ''} ${application.student?.lastName || ''}`.trim() || "Student",
+        email: application.student?.user?.email || "Email",
         university: application.student?.university || application.student?.user?.university || "University",
         fieldOfStudy: application.student?.fieldOfStudy || application.student?.user?.fieldOfStudy || "Field",
         academicYear: application.student?.academicYear || application.student?.user?.academicYear || "Year",
       },
       company: {
-        name: application.offer?.company?.user?.name || application.offer?.company?.name || "Company",
+        name: application.offer?.company?.user?.companyName || application.offer?.company?.user?.name || application.offer?.company?.name || "Company",
+        email: application.offer?.company?.user?.email || "Email",
         wilaya: application.offer?.company?.user?.wilaya || application.offer?.company?.location || "Wilaya",
+        industry: application.offer?.company?.user?.industry || application.offer?.company?.industry || "Secteur",
+        website: application.offer?.company?.user?.websiteUrl || application.offer?.company?.website || "Site web",
       },
       offer: {
         title: application.offer?.title || "Internship",
@@ -462,6 +466,7 @@ exports.getConventionData = async (req, res) => {
         duration: application.offer?.duration || "Unknown",
         startDate: application.offer?.startDate,
         endDate: application.offer?.endDate,
+        workMode: application.offer?.workMode || "on-site",
       },
       validatedAt: application.validatedAt,
     });
