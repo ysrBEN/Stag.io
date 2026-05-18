@@ -80,9 +80,9 @@ const getStats = async (req, res) => {
             Offer.countDocuments()
         ]);
 
-        // Aggregate students by wilaya
+        // Aggregate users by wilaya (both students and companies for richer charts)
         const studentsByWilaya = await User.aggregate([
-            { $match: { role: 'student', wilaya: { $exists: true, $ne: "" } } },
+            { $match: { wilaya: { $exists: true, $ne: "" } } },
             { $group: { _id: '$wilaya', count: { $sum: 1 } } },
             { $sort: { count: -1 } },
             { $limit: 8 },
@@ -117,12 +117,20 @@ const getStats = async (req, res) => {
         ]);
 
         res.json({ 
+            // 📱 Expected by mobile admin_statistics_screen.dart & standard adminController
             totalStudents, 
             totalCompanies, 
             totalOffers, 
             validatedApps, 
             pendingApps, 
             placementRate: totalStudents > 0 ? Math.round((validatedApps / totalStudents) * 100) : 0,
+            // 💻 Expected by frontend AdminDashboard.jsx
+            students: totalStudents,
+            companies: totalCompanies,
+            // 📱 Expected by mobile admin_dashboard_screen.dart
+            totalInternships: validatedApps,
+            pendingApprovals: pendingApps,
+            // 📊 Charts data
             studentsByWilaya,
             appsOverTime,
             topSkills,
