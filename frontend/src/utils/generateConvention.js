@@ -1,74 +1,177 @@
 import jsPDF from 'jspdf';
 
+const formatDateSafe = (dateVal) => {
+    if (!dateVal) return '................................';
+    const d = new Date(dateVal);
+    if (isNaN(d.getTime())) return '................................';
+    return d.toLocaleDateString('fr-DZ');
+};
+
 export const generateConvention = (data) => {
     const doc = new jsPDF();
-    const { student, company, offer, validatedAt } = data;
+    const { student = {}, company = {}, offer = {}, validatedAt } = data;
 
-    // Header
-    doc.setFontSize(11);
-    doc.text("République Algérienne Démocratique et Populaire", 105, 15, { align: 'center' });
-    doc.text("Ministère de l'Enseignement Supérieur et de la Recherche Scientifique", 105, 22, { align: 'center' });
-    doc.text(student.university || "Université", 105, 29, { align: 'center' });
-
-    // Title
+    // --- TITLE ---
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(22);
+    doc.text("CONVENTION DE STAGE", 105, 20, { align: 'center' });
     doc.setFontSize(18);
-    doc.setFont('helvetica', 'bold');
-    doc.text("CONVENTION DE STAGE", 105, 50, { align: 'center' });
+    doc.text("ENTRE", 105, 30, { align: 'center' });
 
-    // Line separator
+    // --- LEFT BOX (UNIVERSITÉ) ---
+    // x: 15, y: 35, w: 82, h: 52
     doc.setLineWidth(0.5);
-    doc.line(20, 55, 190, 55);
-
-    // Article 1
-    doc.setFontSize(12);
+    doc.rect(15, 35, 82, 52);
+    
+    const uniName = student.university || "UNIVERSITE DE CONSTANTINE 2";
+    doc.setFontSize(10);
     doc.setFont('helvetica', 'bold');
-    doc.text("Article 1 — Les Parties", 20, 65);
+    doc.text(uniName.toUpperCase(), 56, 42, { align: 'center' });
+    
     doc.setFont('helvetica', 'normal');
-    doc.setFontSize(11);
-    doc.text(`Étudiant(e): ${student.name}`, 25, 75);
-    doc.text(`Filière: ${student.fieldOfStudy || 'N/A'} — Année: ${student.academicYear || 'N/A'}`, 25, 82);
-    doc.text(`Entreprise: ${company.name}`, 25, 92);
-    doc.text(`Wilaya: ${company.wilaya || 'N/A'}`, 25, 99);
-
-    // Article 2
+    doc.setFontSize(9);
+    doc.text("Abdelhamid Mehri", 56, 47, { align: 'center' });
+    doc.setFontSize(8);
+    doc.text("Sise Nouvelle ville Ali Mendjeli, Constantine - Algérie", 56, 52, { align: 'center' });
+    
+    doc.setFontSize(9);
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(12);
-    doc.text("Article 2 — Objet du Stage", 20, 115);
+    doc.text("Représentée par :", 56, 58, { align: 'center' });
+    
     doc.setFont('helvetica', 'normal');
-    doc.setFontSize(11);
-    doc.text(`Poste: ${offer.title}`, 25, 125);
-    doc.text(`Type: ${offer.type || 'N/A'} — Durée: ${offer.duration || 'N/A'}`, 25, 132);
+    doc.setFontSize(8.5);
+    const repUni = "Monsieur le Vice Recteur chargé des relations extérieures, ci après désignée université";
+    doc.text(doc.splitTextToSize(repUni, 78), 17, 64);
+    
+    doc.setFontSize(8);
+    doc.text("Tél/Fax : + 00 213 (0)31 82 45 79", 17, 83);
 
-    // Article 3
+    // --- CENTER "ET" ---
+    doc.setFontSize(20);
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(12);
-    doc.text("Article 3 — Période", 20, 148);
+    doc.text("ET", 105, 62, { align: 'center' });
+
+    // --- RIGHT BOX (ENTREPRISE) ---
+    // x: 113, y: 35, w: 82, h: 52
+    doc.setLineWidth(0.5);
+    doc.rect(113, 35, 82, 52);
+    
+    doc.setFontSize(9);
     doc.setFont('helvetica', 'normal');
-    doc.setFontSize(11);
-    doc.text(`Date de validation: ${validatedAt ? new Date(validatedAt).toLocaleDateString('fr-DZ') : 'N/A'}`, 25, 158);
-
-    // Article 4
+    doc.text("L'entreprise (nom et adresse)", 154, 42, { align: 'center' });
+    
+    doc.setFontSize(10);
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(12);
-    doc.text("Article 4 — Obligations", 20, 174);
+    const compNameText = `${company.name || 'Entreprise'} — ${company.wilaya || 'Algérie'}`;
+    doc.text(doc.splitTextToSize(compNameText, 78), 154, 48, { align: 'center' });
+    
+    doc.setFontSize(9);
+    doc.text("Représentée par :", 154, 58, { align: 'center' });
+    
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    doc.text("Monsieur .....................................................", 115, 66);
+    doc.text("...................................................................", 115, 74);
+    doc.text("Tél : ............................ Fax : .........................", 115, 83);
+
+    // --- MAIN BOX (DONNÉES ÉTUDIANT) ---
+    // x: 15, y: 95, w: 180, h: 115
+    doc.setLineWidth(1.0); // Thick border
+    doc.rect(15, 95, 180, 115);
+    
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.text("DONNÉES RELATIVES À L'ÉTUDIANT", 105, 105, { align: 'center' });
+    doc.setLineWidth(0.5);
+    doc.line(62, 107, 148, 107); // Underline title
+
+    // Fields inside main box
+    const startX = 18;
+    let currY = 118;
+    const lineHeight = 8.5;
+
+    // Nom et prénom
+    doc.setFontSize(11);
+    doc.setFont('helvetica', 'bold'); doc.text("Nom et prénom : ", startX, currY);
+    doc.setFont('helvetica', 'normal'); doc.text(student.name || "....................................................", startX + 35, currY);
+    currY += lineHeight;
+
+    // Faculté
+    doc.setFont('helvetica', 'bold'); doc.text("Faculté : ", startX, currY);
+    doc.setFont('helvetica', 'normal'); doc.text("....................................................................................", startX + 22, currY);
+    currY += lineHeight;
+
+    // Département
+    doc.setFont('helvetica', 'bold'); doc.text("Département : ", startX, currY);
+    doc.setFont('helvetica', 'normal'); doc.text(student.fieldOfStudy || "........................................................................", startX + 30, currY);
+    currY += lineHeight;
+
+    // Carte d'étudiant & N° Sécurité Sociale
+    doc.setFont('helvetica', 'bold'); doc.text("Carte d'étudiant n° : ", startX, currY);
+    doc.setFont('helvetica', 'normal'); doc.text("............................", startX + 42, currY);
+    
+    doc.setFont('helvetica', 'bold'); doc.text("N° Sécurité Sociale : ", 110, currY);
+    doc.setFont('helvetica', 'normal'); doc.text("............................", 152, currY);
+    currY += lineHeight;
+
+    // Tél
+    doc.setFont('helvetica', 'bold'); doc.text("Tél : ", startX, currY);
+    doc.setFont('helvetica', 'normal'); doc.text("........................................................................................", startX + 12, currY);
+    currY += lineHeight;
+
+    // Diplôme préparé
+    doc.setFont('helvetica', 'bold'); doc.text("Diplôme préparé : ", startX, currY);
+    doc.setFont('helvetica', 'normal'); doc.text(student.academicYear ? `Master / Licence (${student.academicYear})` : "Master / Licence ....................................", startX + 38, currY);
+    currY += lineHeight;
+
+    // Thème du stage
+    doc.setFont('helvetica', 'bold'); doc.text("Thème du stage : ", startX, currY);
+    doc.setFont('helvetica', 'normal'); 
+    const themeText = offer.title || "....................................................................................";
+    doc.text(doc.splitTextToSize(themeText, 130), startX + 36, currY);
+    currY += lineHeight + 3; // extra space in case of wrap
+
+    // Responsable pédagogique
+    doc.setFont('helvetica', 'bold'); doc.text("Responsable pédagogique : ", startX, currY);
+    doc.setFont('helvetica', 'normal'); doc.text("........................................................................", startX + 56, currY);
+    currY += lineHeight;
+
+    // Durée du stage
+    doc.setFont('helvetica', 'bold'); doc.text("Durée du stage : ", startX, currY);
+    doc.setFont('helvetica', 'normal'); doc.text(offer.duration || "............................", startX + 34, currY);
+    currY += lineHeight + 2;
+
+    // Date début & fin
+    doc.setFont('helvetica', 'bold'); doc.text("Date de début du stage : ", startX, currY);
+    doc.setFont('helvetica', 'normal'); doc.text(formatDateSafe(offer.startDate), startX + 48, currY);
+
+    doc.setFont('helvetica', 'bold'); doc.text("Date de fin du stage : ", 110, currY);
+    doc.setFont('helvetica', 'normal'); doc.text(formatDateSafe(offer.endDate), 152, currY);
+
+    // --- FOOTER ---
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'bold');
+    doc.text("Etablie en 02 exemplaires originaux : 1 exemplaire pour l'université et 01 exemplaire pour l'entreprise", 105, 218, { align: 'center' });
+
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(10);
-    const obligations = "L'étudiant s'engage à respecter le règlement intérieur de l'entreprise et à réaliser les missions confiées. L'entreprise s'engage à encadrer l'étudiant et à lui fournir les moyens nécessaires.";
-    const lines = doc.splitTextToSize(obligations, 165);
-    doc.text(lines, 25, 184);
+    const dateStr = validatedAt ? new Date(validatedAt).toLocaleDateString('fr-DZ') : '....................................';
+    doc.text(`Fait à Constantine le : ${dateStr}`, 145, 228, { align: 'center' });
 
-    // Signatures
-    doc.setFontSize(11);
-    doc.text("Fait le: " + new Date().toLocaleDateString('fr-DZ'), 20, 230);
+    // Visa du chef de département
     doc.setFont('helvetica', 'bold');
-    doc.text("L'Université", 30, 250);
-    doc.text("L'Entreprise", 95, 250);
-    doc.text("L'Étudiant(e)", 160, 250);
-    doc.setFont('helvetica', 'normal');
-    doc.text("Cachet et Signature", 20, 258);
-    doc.text("Cachet et Signature", 85, 258);
-    doc.text("Cachet et Signature", 150, 258);
+    doc.setFontSize(11);
+    doc.text("Visa du chef de département :", 20, 242);
+    doc.setLineWidth(0.5);
+    doc.line(20, 243, 72, 243);
+
+    // Bottom Signatures
+    doc.text("Pour l'entreprise", 30, 265);
+    doc.line(30, 266, 62, 266);
+
+    doc.text("Pour l'université", 145, 265);
+    doc.line(145, 266, 177, 266);
 
     // Save
-    doc.save(`Convention_Stage_${student.name.replace(/ /g, '_')}.pdf`);
+    doc.save(`Convention_Stage_${(student.name || 'Etudiant').replace(/ /g, '_')}.pdf`);
 };

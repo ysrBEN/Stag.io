@@ -460,6 +460,8 @@ exports.getConventionData = async (req, res) => {
         title: application.offer?.title || "Internship",
         type: application.offer?.type || "PFE",
         duration: application.offer?.duration || "Unknown",
+        startDate: application.offer?.startDate,
+        endDate: application.offer?.endDate,
       },
       validatedAt: application.validatedAt,
     });
