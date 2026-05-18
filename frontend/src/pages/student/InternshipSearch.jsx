@@ -121,7 +121,7 @@ const InternshipSearch = () => {
         setCoverLetterWarning(false);
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:5000/api/ai/cover-letter', {
+            const response = await fetch('https://stag-io-b8nn.onrender.com/api/ai/cover-letter', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -188,7 +188,7 @@ const InternshipSearch = () => {
 
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:5000/api/ai/cover-letter', {
+            const response = await fetch('https://stag-io-b8nn.onrender.com/api/ai/cover-letter', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -4,9 +4,7 @@
 
 class AppConstants {
   // 🔌 API Base URL
-  // Android emulator → use 10.0.2.2 to reach localhost on host machine
-  // Real device on same WiFi → replace with your PC's local IP e.g. http://192.168.1.x:5000
-  static const String baseUrl = 'http://192.168.1.7:5000/api';
+  static const String baseUrl = 'https://stag-io-b8nn.onrender.com/api';
 
   // JWT Token storage key
   static const String tokenKey = 'jwt_token';
