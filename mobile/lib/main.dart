@@ -7,6 +7,7 @@ import 'core/auth_provider.dart';
 import 'core/theme_provider.dart';
 import 'core/app_theme.dart';
 import 'screens/auth/login_screen.dart';
+import 'screens/landing_screen.dart';
 import 'screens/student/student_home.dart';
 import 'screens/company/company_home.dart';
 import 'screens/admin/admin_home.dart';
@@ -70,7 +71,7 @@ class _RootRouter extends StatelessWidget {
     final auth = context.watch<AuthProvider>();
 
     if (!auth.isLoggedIn) {
-      return const LoginScreen();
+      return const LandingScreen();
     }
 
     switch (auth.role) {
@@ -81,7 +82,7 @@ class _RootRouter extends StatelessWidget {
       case 'admin':
         return const AdminHome();
       default:
-        return const LoginScreen();
+        return const LandingScreen();
     }
   }
 }
