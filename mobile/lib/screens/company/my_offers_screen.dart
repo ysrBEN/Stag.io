@@ -208,7 +208,7 @@ class _MyOffersScreenState extends State<MyOffersScreen> {
                             selected: isSel,
                             onSelected: (_) => setModalState(() => selectedType = type),
                             selectedColor: AppTheme.primary,
-                            backgroundColor: const Color(0xFF1E1B4B),
+                            backgroundColor: const Color(0xFF162035),
                             labelStyle: TextStyle(
                               color: isSel ? Colors.white : AppTheme.textMuted,
                               fontWeight: FontWeight.bold,
@@ -236,7 +236,7 @@ class _MyOffersScreenState extends State<MyOffersScreen> {
                             selected: isSel,
                             onSelected: (_) => setModalState(() => selectedWorkMode = mode['id']!),
                             selectedColor: AppTheme.primary,
-                            backgroundColor: const Color(0xFF1E1B4B),
+                            backgroundColor: const Color(0xFF162035),
                             labelStyle: TextStyle(
                               color: isSel ? Colors.white : AppTheme.textMuted,
                               fontWeight: FontWeight.bold,
@@ -301,7 +301,7 @@ class _MyOffersScreenState extends State<MyOffersScreen> {
                                   }
                                 },
                                 style: OutlinedButton.styleFrom(
-                                  side: const BorderSide(color: Color(0xFF3730A3)),
+                                  side: const BorderSide(color: Color(0xFF1E293B)),
                                   padding: const EdgeInsets.symmetric(vertical: 12),
                                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                                 ),
@@ -335,7 +335,7 @@ class _MyOffersScreenState extends State<MyOffersScreen> {
                                   }
                                 },
                                 style: OutlinedButton.styleFrom(
-                                  side: const BorderSide(color: Color(0xFF3730A3)),
+                                  side: const BorderSide(color: Color(0xFF1E293B)),
                                   padding: const EdgeInsets.symmetric(vertical: 12),
                                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                                 ),
@@ -526,9 +526,9 @@ class _MyOffersScreenState extends State<MyOffersScreen> {
       margin: const EdgeInsets.only(bottom: 14),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFF1E1B4B),
+        color: const Color(0xFF162035),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: const Color(0xFF3730A3)),
+        border: Border.all(color: const Color(0xFF1E293B)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

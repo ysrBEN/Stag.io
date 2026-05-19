@@ -131,7 +131,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   void _openAvatarPicker() {
     showModalBottomSheet(
       context: context,
-      backgroundColor: const Color(0xFF1E1B4B),
+      backgroundColor: const Color(0xFF162035),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
@@ -159,7 +159,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: isSelected ? AppTheme.primary : const Color(0xFF0F0E2A),
+                        color: isSelected ? AppTheme.primary : const Color(0xFF0F1C2E),
                         borderRadius: BorderRadius.circular(16),
                         border: Border.all(
                           color: isSelected ? Colors.white : Colors.white.withOpacity(0.1),
@@ -189,7 +189,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [Color(0xFF0F0E2A), Color(0xFF1E1B4B), Color(0xFF0F172A)],
+            colors: [Color(0xFF0F1C2E), Color(0xFF162035), Color(0xFF0F1C2E)],
           ),
         ),
         child: SafeArea(
@@ -242,7 +242,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               width: 84,
                               height: 84,
                               decoration: BoxDecoration(
-                                color: const Color(0xFF0F0E2A),
+                                color: const Color(0xFF0F1C2E),
                                 shape: BoxShape.circle,
                                 border: Border.all(color: AppTheme.primary, width: 2),
                                 boxShadow: [
@@ -284,9 +284,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 Container(
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF1E1B4B).withOpacity(0.85),
+                    color: const Color(0xFF162035).withOpacity(0.85),
                     borderRadius: BorderRadius.circular(24),
-                    border: Border.all(color: const Color(0xFF3730A3).withOpacity(0.6)),
+                    border: Border.all(color: const Color(0xFF1E293B).withOpacity(0.6)),
                   ),
                   child: AnimatedCrossFade(
                     duration: const Duration(milliseconds: 300),
@@ -421,10 +421,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
           duration: const Duration(milliseconds: 250),
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: selected ? AppTheme.primary.withOpacity(0.15) : const Color(0xFF0F0E2A).withOpacity(0.5),
+            color: selected ? AppTheme.primary.withOpacity(0.15) : const Color(0xFF0F1C2E).withOpacity(0.5),
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
-              color: selected ? AppTheme.primary : const Color(0xFF3730A3).withOpacity(0.4),
+              color: selected ? AppTheme.primary : const Color(0xFF1E293B).withOpacity(0.4),
               width: selected ? 2 : 1,
             ),
             boxShadow: selected
@@ -505,7 +505,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             }).toList(),
             onChanged: (val) => setState(() => _selectedYear = val),
             validator: (v) => v == null ? 'Please select a year' : null,
-            dropdownColor: const Color(0xFF1E1B4B),
+            dropdownColor: const Color(0xFF162035),
           ),
           const SizedBox(height: 16),
 
@@ -523,7 +523,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             }).toList(),
             onChanged: (val) => setState(() => _selectedWilaya = val),
             validator: (v) => v == null ? 'Please select a Wilaya' : null,
-            dropdownColor: const Color(0xFF1E1B4B),
+            dropdownColor: const Color(0xFF162035),
           ),
           const SizedBox(height: 20),
 
@@ -560,10 +560,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                   decoration: BoxDecoration(
-                    color: isSelected ? AppTheme.primary : const Color(0xFF0F0E2A).withOpacity(0.5),
+                    color: isSelected ? AppTheme.primary : const Color(0xFF0F1C2E).withOpacity(0.5),
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
-                      color: isSelected ? AppTheme.primary : const Color(0xFF3730A3).withOpacity(0.4),
+                      color: isSelected ? AppTheme.primary : const Color(0xFF1E293B).withOpacity(0.4),
                     ),
                   ),
                   child: Text(
@@ -626,7 +626,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: OutlinedButton(
                   onPressed: _prevStep,
                   style: OutlinedButton.styleFrom(
-                    side: const BorderSide(color: Color(0xFF3730A3)),
+                    side: const BorderSide(color: Color(0xFF1E293B)),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                     padding: const EdgeInsets.symmetric(vertical: 14),
                   ),
@@ -680,7 +680,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             }).toList(),
             onChanged: (val) => setState(() => _companyWilaya = val),
             validator: (v) => v == null ? 'Please select a Wilaya' : null,
-            dropdownColor: const Color(0xFF1E1B4B),
+            dropdownColor: const Color(0xFF162035),
           ),
           const SizedBox(height: 16),
 
@@ -698,7 +698,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             }).toList(),
             onChanged: (val) => setState(() => _companyIndustry = val),
             validator: (v) => v == null ? 'Please select an Industry' : null,
-            dropdownColor: const Color(0xFF1E1B4B),
+            dropdownColor: const Color(0xFF162035),
           ),
           const SizedBox(height: 16),
 
@@ -724,7 +724,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: OutlinedButton(
                   onPressed: _prevStep,
                   style: OutlinedButton.styleFrom(
-                    side: const BorderSide(color: Color(0xFF3730A3)),
+                    side: const BorderSide(color: Color(0xFF1E293B)),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                     padding: const EdgeInsets.symmetric(vertical: 14),
                   ),

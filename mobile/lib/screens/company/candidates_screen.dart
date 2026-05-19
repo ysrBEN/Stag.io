@@ -276,11 +276,11 @@ class _CandidatesScreenState extends State<CandidatesScreen> {
                                 fontSize: 12,
                               ),
                               selectedColor: AppTheme.primary,
-                              backgroundColor: const Color(0xFF1E1B4B),
+                              backgroundColor: const Color(0xFF162035),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20),
                                 side: BorderSide(
-                                  color: isSelected ? AppTheme.primary : const Color(0xFF3730A3),
+                                  color: isSelected ? AppTheme.primary : const Color(0xFF1E293B),
                                 ),
                               ),
                             ),
@@ -369,10 +369,10 @@ class _CandidatesScreenState extends State<CandidatesScreen> {
             margin: const EdgeInsets.only(bottom: 14),
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: const Color(0xFF1E1B4B),
+              color: const Color(0xFF162035),
               borderRadius: BorderRadius.circular(14),
               border: Border.all(
-                color: hasOverlap ? Colors.redAccent.withOpacity(0.4) : const Color(0xFF3730A3),
+                color: hasOverlap ? Colors.redAccent.withOpacity(0.4) : const Color(0xFF1E293B),
                 width: hasOverlap ? 1.5 : 1.0,
               ),
             ),

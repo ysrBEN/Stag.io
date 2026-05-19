@@ -71,7 +71,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [Color(0xFF0F0E2A), Color(0xFF1E1B4B), Color(0xFF0F172A)],
+            colors: [Color(0xFF0F1C2E), Color(0xFF162035), Color(0xFF0F1C2E)],
           ),
         ),
         child: SafeArea(
@@ -94,7 +94,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       margin: const EdgeInsets.symmetric(horizontal: 3),
                       height: 4,
                       decoration: BoxDecoration(
-                        color: _step >= i + 1 ? AppTheme.primary : const Color(0xFF3730A3),
+                        color: _step >= i + 1 ? AppTheme.primary : const Color(0xFF1E293B),
                         borderRadius: BorderRadius.circular(2),
                       ),
                     ),

@@ -129,9 +129,9 @@ class _CompanyProfileScreenState extends State<CompanyProfileScreen> {
             width: double.infinity,
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: const Color(0xFF1E1B4B),
+              color: const Color(0xFF162035),
               borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: const Color(0xFF3730A3)),
+              border: Border.all(color: const Color(0xFF1E293B)),
             ),
             child: Column(
               children: [
@@ -310,9 +310,9 @@ class _CompanyProfileScreenState extends State<CompanyProfileScreen> {
                 width: double.infinity,
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF1E1B4B),
+                  color: const Color(0xFF162035),
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: const Color(0xFF3730A3).withOpacity(0.5)),
+                  border: Border.all(color: const Color(0xFF1E293B).withOpacity(0.5)),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -362,9 +362,9 @@ class _CompanyProfileScreenState extends State<CompanyProfileScreen> {
       margin: const EdgeInsets.only(bottom: 10),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        color: const Color(0xFF1E1B4B),
+        color: const Color(0xFF162035),
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: const Color(0xFF3730A3).withOpacity(0.3)),
+        border: Border.all(color: const Color(0xFF1E293B).withOpacity(0.3)),
       ),
       child: Row(
         children: [

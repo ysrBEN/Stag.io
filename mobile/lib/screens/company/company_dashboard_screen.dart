@@ -222,9 +222,9 @@ class _CompanyDashboardScreenState extends State<CompanyDashboardScreen> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFF1E1B4B),
+        color: const Color(0xFF162035),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: const Color(0xFF3730A3)),
+        border: Border.all(color: const Color(0xFF1E293B)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -291,9 +291,9 @@ class _CompanyDashboardScreenState extends State<CompanyDashboardScreen> {
         width: double.infinity,
         padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
         decoration: BoxDecoration(
-          color: const Color(0xFF1E1B4B),
+          color: const Color(0xFF162035),
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: const Color(0xFF3730A3)),
+          border: Border.all(color: const Color(0xFF1E293B)),
         ),
         child: const Center(
           child: Text(
@@ -306,15 +306,15 @@ class _CompanyDashboardScreenState extends State<CompanyDashboardScreen> {
 
     return Container(
       decoration: BoxDecoration(
-        color: const Color(0xFF1E1B4B),
+        color: const Color(0xFF162035),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: const Color(0xFF3730A3)),
+        border: Border.all(color: const Color(0xFF1E293B)),
       ),
       child: ListView.separated(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemCount: _offers.length > 3 ? 3 : _offers.length,
-        separatorBuilder: (_, __) => const Divider(color: Color(0xFF3730A3), height: 1),
+        separatorBuilder: (_, __) => const Divider(color: Color(0xFF1E293B), height: 1),
         itemBuilder: (_, index) {
           final offer = _offers[index];
           final appsCount = _getOfferApplicantsCount(offer.id);
@@ -372,9 +372,9 @@ class _CompanyDashboardScreenState extends State<CompanyDashboardScreen> {
         width: double.infinity,
         padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
         decoration: BoxDecoration(
-          color: const Color(0xFF1E1B4B),
+          color: const Color(0xFF162035),
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: const Color(0xFF3730A3)),
+          border: Border.all(color: const Color(0xFF1E293B)),
         ),
         child: const Center(
           child: Text(
@@ -412,9 +412,9 @@ class _CompanyDashboardScreenState extends State<CompanyDashboardScreen> {
           margin: const EdgeInsets.only(bottom: 10),
           padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(
-            color: const Color(0xFF1E1B4B),
+            color: const Color(0xFF162035),
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: const Color(0xFF3730A3)),
+            border: Border.all(color: const Color(0xFF1E293B)),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

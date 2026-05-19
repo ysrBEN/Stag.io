@@ -110,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           selected: selectedRole == 'student',
                           onSelected: (_) => setModalState(() => selectedRole = 'student'),
                           selectedColor: AppTheme.primary,
-                          backgroundColor: const Color(0xFF1E1B4B),
+                          backgroundColor: const Color(0xFF162035),
                         ),
                         const SizedBox(width: 10),
                         ChoiceChip(
@@ -118,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           selected: selectedRole == 'company',
                           onSelected: (_) => setModalState(() => selectedRole = 'company'),
                           selectedColor: AppTheme.primary,
-                          backgroundColor: const Color(0xFF1E1B4B),
+                          backgroundColor: const Color(0xFF162035),
                         ),
                       ],
                     ),
@@ -470,7 +470,7 @@ class _LoginScreenState extends State<LoginScreen> {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [Color(0xFF0F0E2A), Color(0xFF1E1B4B), Color(0xFF0F172A)],
+            colors: [Color(0xFF0F1C2E), Color(0xFF162035), Color(0xFF0F1C2E)],
           ),
         ),
         child: SafeArea(
@@ -495,9 +495,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   Container(
                     padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF1E1B4B).withOpacity(0.8),
+                      color: const Color(0xFF162035).withOpacity(0.8),
                       borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: const Color(0xFF3730A3), width: 1),
+                      border: Border.all(color: const Color(0xFF1E293B), width: 1),
                     ),
                     child: Form(
                       key: _formKey,
@@ -586,7 +586,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: OutlinedButton(
                               onPressed: auth.isLoading ? null : _signInWithRealGoogle,
                               style: OutlinedButton.styleFrom(
-                                side: const BorderSide(color: Color(0xFF3730A3)),
+                                side: const BorderSide(color: Color(0xFF1E293B)),
                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                               ),
                               child: Row(

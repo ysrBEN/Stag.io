@@ -5,35 +5,35 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
-  // Brand colors
-  static const Color primary = Color(0xFF4F46E5);      // Indigo
-  static const Color primaryDark = Color(0xFF3730A3);
-  static const Color accent = Color(0xFF06B6D4);        // Cyan
+  // Brand colors (Matching the website theme)
+  static const Color primary = Color(0xFF0D9488);      // Teal (#0D9488)
+  static const Color primaryDark = Color(0xFF0F766E);  // Darker Teal
+  static const Color accent = Color(0xFF3B82F6);        // Blue (#3B82F6)
   static const Color success = Color(0xFF10B981);       // Green
   static const Color warning = Color(0xFFF59E0B);       // Amber
   static const Color danger = Color(0xFFEF4444);        // Red
-  static const Color surface = Color(0xFF1E1B4B);       // Deep indigo bg
-  static const Color cardBg = Color(0xFF312E81);
+  static const Color surface = Color(0xFF162035);       // Dark Navy Surface (#162035)
+  static const Color cardBg = Color(0xFF1E293B);        // Slate Card Background (#1E293B)
   static const Color textLight = Color(0xFFF1F5F9);
   static const Color textMuted = Color(0xFF94A3B8);
-  static const Color logoTeal = Color(0xFF2DD4BF); // Matches generated logo
+  static const Color logoTeal = Color(0xFF2DD4BF);      // Matches generated logo
 
   static ThemeData get darkTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
-      scaffoldBackgroundColor: const Color(0xFF0F0E2A),
+      scaffoldBackgroundColor: const Color(0xFF0F1C2E), // Web theme dark navy background
       colorScheme: ColorScheme.dark(
         primary: primary,
         secondary: accent,
-        surface: const Color(0xFF1A1740),
+        surface: surface,
         error: danger,
       ),
       textTheme: GoogleFonts.poppinsTextTheme(
         ThemeData.dark().textTheme,
       ).apply(bodyColor: textLight, displayColor: textLight),
       appBarTheme: AppBarTheme(
-        backgroundColor: const Color(0xFF0F0E2A),
+        backgroundColor: const Color(0xFF0F1C2E),
         elevation: 0,
         centerTitle: false,
         titleTextStyle: GoogleFonts.poppins(
@@ -54,14 +54,14 @@ class AppTheme {
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: const Color(0xFF1E1B4B),
+        fillColor: surface,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Color(0xFF3730A3)),
+          borderSide: const BorderSide(color: Color(0xFF1E293B)),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Color(0xFF3730A3)),
+          borderSide: const BorderSide(color: Color(0xFF1E293B)),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
@@ -71,19 +71,19 @@ class AppTheme {
         hintStyle: const TextStyle(color: Color(0xFF64748B)),
       ),
       cardTheme: CardThemeData(
-        color: const Color(0xFF1E1B4B),
+        color: cardBg,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         elevation: 4,
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        backgroundColor: Color(0xFF0F0E2A),
+        backgroundColor: Color(0xFF0F1C2E),
         selectedItemColor: primary,
         unselectedItemColor: Color(0xFF64748B),
         type: BottomNavigationBarType.fixed,
         elevation: 8,
       ),
       chipTheme: ChipThemeData(
-        backgroundColor: const Color(0xFF312E81),
+        backgroundColor: cardBg,
         labelStyle: const TextStyle(color: textLight, fontSize: 12),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       ),
@@ -114,7 +114,7 @@ class AppTheme {
           fontSize: 20,
           fontWeight: FontWeight.w600,
         ),
-        iconTheme: const IconThemeData(color: Color(0xFF1E293B)),
+        iconTheme: const IconThemeData(color: const Color(0xFF1E293B)),
       ),
       cardTheme: CardThemeData(
         color: Colors.white,
