@@ -7,7 +7,6 @@ import {
 import useAuth from '../hooks/useAuth';
 import NotificationBell from './NotificationBell';
 import ThemeToggle from './ThemeToggle';
-import ChatBot from './ChatBot';
 
 const CompanyLayout = () => {
     const { user, logout } = useAuth();
@@ -127,8 +126,6 @@ const CompanyLayout = () => {
                     <Outlet />
                 </div>
             </main>
-
-            <ChatBot />
         </div>
     );
 };

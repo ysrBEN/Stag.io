@@ -8,7 +8,6 @@ import useAuth from '../hooks/useAuth';
 import axiosInstance from '../api/axiosInstance';
 import NotificationBell from './NotificationBell';
 import ThemeToggle from './ThemeToggle';
-import ChatBot from './ChatBot';
 
 const AdminLayout = () => {
     const { user, logout } = useAuth();
@@ -131,8 +130,6 @@ const AdminLayout = () => {
                     <Outlet />
                 </div>
             </main>
-
-            <ChatBot />
         </div>
     );
 };
