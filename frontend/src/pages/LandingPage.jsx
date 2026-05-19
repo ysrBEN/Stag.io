@@ -31,29 +31,29 @@ const LandingPage = () => {
         <div className="min-h-screen bg-gradient-to-b from-gray-50 via-gray-100 to-gray-50 dark:from-[#0F1C2E] dark:via-[#1E3A5F] dark:to-[#0F1C2E] text-gray-900 dark:text-white font-sans selection:bg-teal-500 selection:text-white overflow-x-hidden transition-colors duration-300">
             {/* Navbar */}
             <header className="absolute top-0 left-0 right-0 z-50 border-b border-gray-200/50 dark:border-white/10 bg-white/40 dark:bg-white/5 backdrop-blur-md">
-                <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-                    <div className="flex items-center space-x-3 group cursor-pointer" onClick={() => navigate('/')}>
-                        <div className="p-2.5 bg-teal-500/20 border border-teal-500/40 rounded-xl group-hover:scale-110 transition-transform shadow-lg shadow-teal-500/10">
-                            <GraduationCap className="w-7 h-7 text-teal-600 dark:text-teal-400" />
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+                    <div className="flex items-center space-x-2 sm:space-x-3 group cursor-pointer" onClick={() => navigate('/')}>
+                        <div className="p-2 sm:p-2.5 bg-teal-500/20 border border-teal-500/40 rounded-xl group-hover:scale-110 transition-transform shadow-lg shadow-teal-500/10">
+                            <GraduationCap className="w-5 h-5 sm:w-7 sm:h-7 text-teal-600 dark:text-teal-400" />
                         </div>
-                        <span className="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-gray-900 to-teal-600 dark:from-white dark:via-gray-200 dark:to-teal-300 bg-clip-text text-transparent">
+                        <span className="text-xl sm:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-gray-900 to-teal-600 dark:from-white dark:via-gray-200 dark:to-teal-300 bg-clip-text text-transparent">
                             Stag.io
                         </span>
                     </div>
 
-                    <div className="flex items-center space-x-4">
+                    <div className="flex items-center space-x-1.5 sm:space-x-4">
                         <ThemeToggle />
                         <Link
                             to="/login"
-                            className="flex items-center px-5 py-2.5 rounded-xl font-semibold text-sm text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 border border-transparent hover:border-black/5 dark:hover:border-white/10 transition-all shadow-sm"
+                            className="flex items-center px-3 py-2 sm:px-5 sm:py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 border border-transparent hover:border-black/5 dark:hover:border-white/10 transition-all shadow-sm"
                         >
-                            <LogIn className="w-4 h-4 mr-2 text-teal-600 dark:text-teal-400" /> Login
+                            <LogIn className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-teal-600 dark:text-teal-400" /> Login
                         </Link>
                         <Link
                             to="/register"
-                            className="flex items-center px-5 py-2.5 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 shadow-md shadow-teal-500/20 hover:shadow-teal-500/30 hover:scale-105 transition-all border border-teal-400/30"
+                            className="flex items-center px-3 py-2 sm:px-5 sm:py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-white bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 shadow-md shadow-teal-500/20 hover:shadow-teal-500/30 hover:scale-105 transition-all border border-teal-400/30"
                         >
-                            <UserPlus className="w-4 h-4 mr-2" /> Register
+                            <UserPlus className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1 sm:mr-2" /> Register
                         </Link>
                     </div>
                 </div>
