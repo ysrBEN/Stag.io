@@ -96,11 +96,11 @@ const CompanyLayout = () => {
                             {user?.profilePicture ? (
                                 <img src={user.profilePicture} alt="Profile" className="w-full h-full object-cover" />
                             ) : (
-                                user?.name?.charAt(0).toUpperCase() || 'C'
+                                (user?.companyName || user?.name || 'Company').charAt(0).toUpperCase()
                             )}
                         </div>
                         <div className="ml-3 overflow-hidden">
-                            <p className="text-sm font-medium text-gray-900 dark:text-white truncate">{user?.name || 'Company Name'}</p>
+                            <p className="text-sm font-medium text-gray-900 dark:text-white truncate">{user?.companyName || user?.name || 'Company Name'}</p>
                             <p className="text-xs text-gray-500 dark:text-gray-400 truncate">Recruiter</p>
                         </div>
                     </div>
