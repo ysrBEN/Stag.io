@@ -61,7 +61,7 @@ class _LandingScreenState extends State<LandingScreen> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.between,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       // Logo
                       Row(
@@ -84,7 +84,7 @@ class _LandingScreenState extends State<LandingScreen> {
                             'Stag.io',
                             style: TextStyle(
                               fontSize: 22,
-                              fontWeight: FontWeight.extrabold,
+                              fontWeight: FontWeight.w800,
                               color: Colors.white,
                               letterSpacing: -0.5,
                             ),
@@ -102,7 +102,7 @@ class _LandingScreenState extends State<LandingScreen> {
                             },
                             child: const Text(
                               'Login',
-                              style: TextStyle(color: Colors.white75, fontWeight: FontWeight.w600),
+                              style: TextStyle(color: Colors.white70, fontWeight: FontWeight.w600),
                             ),
                           ),
                           const SizedBox(width: 8),
