@@ -41,7 +41,9 @@ class _LoginScreenState extends State<LoginScreen> {
     final auth = context.read<AuthProvider>();
     final success = await auth.login(_emailCtrl.text.trim(), _passCtrl.text);
     if (!mounted) return;
-    if (!success) {
+    if (success) {
+      Navigator.of(context).pop();
+    } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(auth.error ?? 'Login failed'),
@@ -226,6 +228,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           if (!mounted) return;
                           if (success) {
                             Navigator.pop(ctx);
+                            Navigator.of(context).pop();
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(content: Text('Google registration successful! Welcome 🎉'), backgroundColor: AppTheme.success),
                             );
@@ -449,6 +452,7 @@ class _LoginScreenState extends State<LoginScreen> {
       if (res['isNewUser'] == true) {
         _showGoogleRegisterSheet(res, token);
       } else {
+        Navigator.of(context).pop();
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Logged in successfully with Google! 🎉'), backgroundColor: AppTheme.success),
         );
